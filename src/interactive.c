@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include "interactive.h"
+#include "common.h"
 
 void run_interactive(void){
-    char linha[1024];
+    char linha[MAX_LINE];
 
     while(1){
         printf("processflow> ");

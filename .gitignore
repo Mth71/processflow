@@ -1,0 +1,9 @@
+# Binário compilado
+src/processflow
+*.o
+
+# Arquivos de teste temporários
+*.tar
+
+# VS Code
+.vscode/

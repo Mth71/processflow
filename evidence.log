@@ -1,0 +1,302 @@
+Script started on 2026-08-23 18:06:33-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="125" LINES="10"]
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [7mgcc -Wall -Wextra -g -Iinclude -o src/teste_parser src/teste_parser.c src/parser.c[27m
+[7m./src/teste_parser[27m[A]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ gcc -Wall -Wextra -g -Iinclude -o src/teste_parser src/teste_parser.c src/parser.c
+./src/teste_parser
+[?2004l[01m[Ksrc/teste_parser.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[Ksrc/teste_parser.c:9:13:[m[K [01;31m[Kerror: [m[Kimplicit declaration of function ‘[01m[Ktokenize[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+    9 |     int n = [01;31m[Ktokenize[m[K(linha, tokens, 20);
+      |             [01;31m[K^~~~~~~~[m[K
+bash: ./src/teste_parser: No such file or directory
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ ./src/teste_parser
+[?2004lbash: ./src/teste_parser: No such file or directory
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ cl[K[K[7mgcc -Wall -Wextra -g -Iinclude -o src/teste_parser src/teste_parser.c src/parser.c[27m
+[7m./src/teste_parser[27m[A]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ gcc -Wall -Wextra -g -Iinclude -o src/teste_parser src/teste_parser.c src/parser.c
+./src/teste_parser
+[?2004lNumero de tokens encontrados: 4
+token[0] = 'task'
+token[1] = 'listar'
+token[2] = '/bin/ls'
+token[3] = '-l'
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ rm src/teste_parser
+[?2004l[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean[K[Kclear
+[?2004l[H[2J[3J[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean && make 
+[?2004lrm -f src/processflow
+gcc -Wall -Wextra -g -Iinclude -o src/processflow src/main.c src/interactive.c src/workflow.c
+/usr/bin/x86_64-linux-gnu-ld.bfd: /tmp/ccUZAxiP.o: in function `run_interactive':
+/mnt/c/processflow/src/interactive.c:24:(.text+0xab): undefined reference to `tokenize'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:12: src/processflow] Error 1
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ ./[K[K./src/processflow
+[?2004lbash: ./src/processflow: No such file or directory
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ cle[K[K[K[7mmake clean && make[27m
+[7m./src/processflow[27m[A]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean && make
+./src/processflow
+[?2004lrm -f src/processflow
+gcc -Wall -Wextra -g -Iinclude -o src/processflow src/main.c src/interactive.c src/workflow.c
+/usr/bin/x86_64-linux-gnu-ld.bfd: /tmp/cck55hIV.o: in function `run_interactive':
+/mnt/c/processflow/src/interactive.c:24:(.text+0xab): undefined reference to `tokenize'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:12: src/processflow] Error 1
+bash: ./src/processflow: No such file or directory
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ ./src/processflow
+[?2004lbash: ./src/processflow: No such file or directory
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ ./src/processflowmake clean && make
+[?2004lrm -f src/processflow
+gcc -Wall -Wextra -g -Iinclude -o src/processflow src/main.c src/interactive.c src/workflow.c src/parser.c 
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean && make[1P./src/processflow
+[?2004lprocessflow> oi exit
+Comando aceito: 'oi' (com 2 token(s) no total)
+processflow> exit
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [7mprocessflow> task listar /bin/ls -l[27m
+[7mprocessflow> task contar /usr/bin/wc -l[27m
+[7mprocessflow> exit[27m[A[A]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ processflow> task listar /bin/ls -l
+processflow> task contar /usr/bin/wc -l
+processflow> exit
+[?2004lprocessflow: command not found
+processflow: command not found
+processflow: command not found
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ processflow> exittask contar /usr/bin/wc -l[4Plistar /bin/ls[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cclear[K./src/processflowclear[Kprocessflow> task listar /bin/ls -l[4@contar /usr/bin/wc[C[C[C[4Plistar /bin/ls[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cclear[Kprocessflow> task listar /bin/ls -l[4@contar /usr/bin/wc[C[C[Cexit[K[Kprocessflow> exittask contar /usr/bin/wc -l[4Plistar /bin/ls[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P
+[?2004ltask: command not found
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean && mae[Kke
+[?2004lrm -f src/processflow
+gcc -Wall -Wextra -g -Iinclude -o src/processflow src/main.c src/interactive.c src/workflow.c src/parser.c 
+[01m[Ksrc/interactive.c:[m[K In function ‘[01m[Krun_interactive[m[K’:
+[01m[Ksrc/interactive.c:36:13:[m[K [01;31m[Kerror: [m[Kimplicit declaration of function ‘[01m[Kadd_task[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+   36 |             [01;31m[Kadd_task[m[K(tokens, n);
+      |             [01;31m[K^~~~~~~~[m[K
+In file included from [01m[Ksrc/interactive.c:6[m[K:
+[01m[Kinclude/task.h:14:9:[m[K [01;36m[Knote: [m[Kprevious declaration of ‘[01m[Kadd_task[m[K’ with type ‘[01m[Kint(char **, int)[m[K’
+   14 |     int [01;36m[Kadd_task[m[K(char**tokens, int ntokens);
+      |         [01;36m[K^~~~~~~~[m[K
+make: *** [Makefile:12: src/processflow] Error 1
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clearmake clean && make
+[?2004lrm -f src/processflow
+gcc -Wall -Wextra -g -Iinclude -o src/processflow src/main.c src/interactive.c src/workflow.c src/parser.c 
+[01m[Ksrc/interactive.c:[m[K In function ‘[01m[Krun_interactive[m[K’:
+[01m[Ksrc/interactive.c:36:13:[m[K [01;31m[Kerror: [m[Kimplicit declaration of function ‘[01m[Kadd_task[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+   36 |             [01;31m[Kadd_task[m[K(tokens, n);
+      |             [01;31m[K^~~~~~~~[m[K
+In file included from [01m[Ksrc/interactive.c:6[m[K:
+[01m[Kinclude/task.h:14:9:[m[K [01;36m[Knote: [m[Kprevious declaration of ‘[01m[Kadd_task[m[K’ with type ‘[01m[Kint(char **, int)[m[K’
+   14 |     int [01;36m[Kadd_task[m[K(char**tokens, int ntokens);
+      |         [01;36m[K^~~~~~~~[m[K
+make: *** [Makefile:12: src/processflow] Error 1
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean && make
+[?2004lrm -f src/processflow
+make: *** No rule to make target 'srctask.c', needed by 'src/processflow'.  Stop.
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ ./src/processflow
+[?2004lbash: ./src/processflow: No such file or directory
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear./src/processflowmake clean && make
+[?2004lrm -f src/processflow
+make: *** No rule to make target 'srctask.c', needed by 'src/processflow'.  Stop.
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean && make
+[?2004lrm -f src/processflow
+gcc -Wall -Wextra -g -Iinclude -o src/processflow src/main.c src/interactive.c src/workflow.c src/parser.c src/task.c
+[01m[Ksrc/interactive.c:[m[K In function ‘[01m[Krun_interactive[m[K’:
+[01m[Ksrc/interactive.c:36:13:[m[K [01;31m[Kerror: [m[Kimplicit declaration of function ‘[01m[Kadd_task[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+   36 |             [01;31m[Kadd_task[m[K(tokens, n);
+      |             [01;31m[K^~~~~~~~[m[K
+In file included from [01m[Ksrc/interactive.c:6[m[K:
+[01m[Kinclude/task.h:14:9:[m[K [01;36m[Knote: [m[Kprevious declaration of ‘[01m[Kadd_task[m[K’ with type ‘[01m[Kint(char **, int)[m[K’
+   14 |     int [01;36m[Kadd_task[m[K(char**tokens, int ntokens);
+      |         [01;36m[K^~~~~~~~[m[K
+[01m[Ksrc/task.c:9:6:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kinit_tasks[m[K’
+    9 | void [01;31m[Kinit_tasks[m[K(void){
+      |      [01;31m[K^~~~~~~~~~[m[K
+In file included from [01m[Ksrc/task.c:3[m[K:
+[01m[Kinclude/task.h:13:6:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kinit_tasks[m[K’ with type ‘[01m[Kvoid(void)[m[K’
+   13 | void [01;36m[Kinit_tasks[m[K(void){
+      |      [01;36m[K^~~~~~~~~~[m[K
+make: *** [Makefile:12: src/processflow] Error 1
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [7mmake clean && make[27m
+[7m./src/processflow[27m[A]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean && make
+./src/processflow
+[?2004lrm -f src/processflow
+gcc -Wall -Wextra -g -Iinclude -o src/processflow src/main.c src/interactive.c src/workflow.c src/parser.c src/task.c
+[01m[Ksrc/interactive.c:[m[K In function ‘[01m[Krun_interactive[m[K’:
+[01m[Ksrc/interactive.c:36:13:[m[K [01;31m[Kerror: [m[Kimplicit declaration of function ‘[01m[Kadd_task[m[K’ [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+   36 |             [01;31m[Kadd_task[m[K(tokens, n);
+      |             [01;31m[K^~~~~~~~[m[K
+In file included from [01m[Ksrc/interactive.c:6[m[K:
+[01m[Kinclude/task.h:14:9:[m[K [01;36m[Knote: [m[Kprevious declaration of ‘[01m[Kadd_task[m[K’ with type ‘[01m[Kint(char **, int)[m[K’
+   14 |     int [01;36m[Kadd_task[m[K(char**tokens, int ntokens);
+      |         [01;36m[K^~~~~~~~[m[K
+[01m[Ksrc/task.c:9:6:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kinit_tasks[m[K’
+    9 | void [01;31m[Kinit_tasks[m[K(void){
+      |      [01;31m[K^~~~~~~~~~[m[K
+In file included from [01m[Ksrc/task.c:3[m[K:
+[01m[Kinclude/task.h:13:6:[m[K [01;36m[Knote: [m[Kprevious definition of ‘[01m[Kinit_tasks[m[K’ with type ‘[01m[Kvoid(void)[m[K’
+   13 | void [01;36m[Kinit_tasks[m[K(void){
+      |      [01;36m[K^~~~~~~~~~[m[K
+make: *** [Makefile:12: src/processflow] Error 1
+bash: ./src/processflow: No such file or directory
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ ./src/processflow
+[?2004lbash: ./src/processflow: No such file or directory
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make && [C[C[C[C[C[1@ [1@c[1@l[1@e[1@a[1@n[C[1@ [C[C[C[Cmake
+[?2004lrm -f src/processflow
+gcc -Wall -Wextra -g -Iinclude -o src/processflow src/main.c src/interactive.c src/workflow.c src/parser.c src/task.c
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean  && makeclear[K./src/processflow
+[?2004lprocessflow> exit
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ ./src/processflowmake clean  && makeclear[K./src/processflowmake clean && makeclear[Kmake clean && makeclear[K./src/processflowmake clean && makeclear[Kmake clean && make[1Pprocessflow> exittask contar /usr/bin/wc -lexit[Ktask contar /usr/bin/wc -l[C[C[C[C[C[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P
+[?2004ltask: command not found
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ ./src/processflowmake clean  && make[2P./src/processflow
+[?2004lprocessflow> ^[[A^[[A^[[A            ^[[A^[[A^[[B^[[B                task contar /usr/bin/wc -l
+tarefa 'contar' cadastrada (programa: '/usr/bin/wc')
+Comando aceito: 'task' (com 4 token(s) no total)
+processflow> 
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [7mmake clean && make[27m
+[7m./src/processflow[27m[A]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean && make
+./src/processflow
+[?2004lrm -f src/processflow
+gcc -Wall -Wextra -g -Iinclude -o src/processflow src/main.c src/interactive.c src/workflow.c src/parser.c src/task.c src/command.c
+[01m[Ksrc/command.c:[m[K In function ‘[01m[Khandle_buscar[m[K’:
+[01m[Ksrc/command.c:14:26:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K[01;32m[K%s[m[K[m[K’ expects a matching ‘[01m[K[01;32m[Kchar *[m[K[m[K’ argument [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wformat-Wformat=]8;;[m[K]
+   14 |         printf("tarefa '[01;32m[K%[m[K[01;32m[Ks[m[K' não encontrada.\n");
+      |                         [01;32m[K~[m[K[01;32m[K^[m[K
+      |                          [01;32m[K|[m[K
+      |                          [01;32m[Kchar *[m[K
+[01m[Ksrc/command.c:20:20:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K[01;32m[K%s[m[K[m[K’ expects argument of type ‘[01m[K[01;32m[Kchar *[m[K[m[K’, but argument 2 has type ‘[01m[K[01;34m[Kint[m[K[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wformat-Wformat=]8;;[m[K]
+   20 |     printf("argc: [01;32m[K%[m[K[01;32m[Ks[m[K\n", [01;34m[Kt[m[K[01;34m[K-[m[K[01;34m[K>[m[K[01;34m[Ka[m[K[01;34m[Kr[m[K[01;34m[Kg[m[K[01;34m[Kc[m[K);
+      |                   [01;32m[K~[m[K[01;32m[K^[m[K     [01;34m[K~[m[K[01;34m[K~[m[K[01;34m[K~[m[K[01;34m[K~[m[K[01;34m[K~[m[K[01;34m[K~[m[K[01;34m[K~[m[K
+      |                    [01;32m[K|[m[K      [01;34m[K|[m[K
+      |                    [01;32m[Kchar *[m[K [01;34m[Kint[m[K
+      |                   [32m[K%d[m[K
+[01m[Ksrc/command.c:[m[K In function ‘[01m[Kdispatch_command[m[K’:
+[01m[Ksrc/command.c:41:41:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K[01;32m[K%s[m[K[m[K’ expects a matching ‘[01m[K[01;32m[Kchar *[m[K[m[K’ argument [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wformat-Wformat=]8;;[m[K]
+   41 |         printf("Comando desconhecido: '[01;32m[K%[m[K[01;32m[Ks[m[K'\n");
+      |                                        [01;32m[K~[m[K[01;32m[K^[m[K
+      |                                         [01;32m[K|[m[K
+      |                                         [01;32m[Kchar *[m[K
+/usr/bin/x86_64-linux-gnu-ld.bfd: /tmp/ccCzo5Ky.o: in function `handle_buscar':
+/mnt/c/processflow/src/command.c:12:(.text+0x3c): undefined reference to `find_task'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:12: src/processflow] Error 1
+bash: ./src/processflow: No such file or directory
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [7mcat src/task.c[27mcat src/task.c
+[?2004l#include <stdio.h>
+#include <string.h>
+#include "task.h"
+#include "common.h"
+
+static Task tasks[MAX_TASKS];
+static int task_cont =0;
+
+void init_tasks(void){
+    task_cont =0;
+} 
+
+int add_task(char**tokens, int ntokens){
+    if(ntokens<3){
+        fprintf(stderr, "Erro! uso correto: task <nome> <programa> [argymentos..]\n");
+        return -1;
+    }
+
+    if (task_cont >= MAX_TASKS){
+        fprintf(stderr, "Erro! Número máximo de tarefas atingido.\n");
+        return -1;
+    }
+
+    Task *t = &tasks[task_cont];
+
+    strncpy(t->name, tokens[1], MAX_LINE - 1 );
+    t->name[MAX_LINE - 1] = '\0';
+
+    strncpy(t->program, tokens[2], MAX_LINE - 1 );
+    t->program[MAX_LINE - 1] = '\0';
+
+    int argc = 0;
+    t->argv[argc] = t->program;
+    argc++;
+
+    for(int i = 3; i<ntokens && argc < MAX_TOKENS - 1; i++){
+            t->argv[argc] = tokens[i];
+            argc++;
+    }
+    t->argv[argc] = NULL;
+    t->argc = argc;
+
+    task_cont++;
+
+    printf("tarefa '%s' cadastrada (programa: '%s')\n", t->name,t->program);
+    return 0;
+
+
+}[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [7mmake clean && make[27m
+[7m./src/processflow[27m[A]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean && make
+./src/processflow
+[?2004lrm -f src/processflow
+gcc -Wall -Wextra -g -Iinclude -o src/processflow src/main.c src/interactive.c src/workflow.c src/parser.c src/task.c src/command.c
+processflow> task listar /bin/ls -l
+task conttarefa 'listar' cadastrada (programa: '/bin/ls')
+processflow> ar /usr/bin/wc -l
+buscar listar
+exittarefa 'contar' cadastrada (programa: '/usr/bin/wc')
+processflow> nome: listar
+programa: /bin/ls
+argc: 2
+argv[0] = '/bin/ls'
+argv[1] = '/wc'
+processflow> task listar /bin/ls -l
+task contar /usr/bin/wc -l
+buscar listar
+Comando desconhecido: 'exittask'
+processflow> tarefa 'contar' cadastrada (programa: '/usr/bin/wc')
+processflow> nome: listar
+programa: /bin/ls
+argc: 2
+argv[0] = '/bin/ls'
+argv[1] = '/wc'
+processflow> exit
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear./src/processflow
+[?2004lprocessflow> task listar /bin/ls -l
+tarefa 'listar' cadastrada (programa: '/bin/ls')
+processflow> task listar /bin/ls -l
+tarefa 'listar' cadastrada (programa: '/bin/ls')
+processflow> task contar /usr/bin/wc -l
+tarefa 'contar' cadastrada (programa: '/usr/bin/wc')
+processflow> buscar listar
+nome: listar
+programa: /bin/ls
+argc: 2
+argv[0] = '/bin/ls'
+argv[1] = '/wc'
+processflow> exit
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear
+[?2004l[H[2J[3J[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ clear./src/processflow
+[?2004lprocessflow> buscar lust   istar
+tarefa 'listar' não encontrada.
+processflow> ^[[A^[[A^[[B^[[B                task listar           task listar /bin/ls -l
+task conttarefa 'listar' cadastrada (programa: '/bin/ls')
+processflow> ar /usr/bin/wc -l
+buscar listar
+tarefa 'contar' cadastrada (programa: '/usr/bin/wc')
+processflow> nome: listar
+programa: /bin/ls
+argc: 2
+argv[0] = '/bin/ls'
+argv[1] = '/wc'
+processflow> exit
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ [K]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean && make
+[?2004lrm -f src/processflow
+gcc -Wall -Wextra -g -Iinclude -o src/processflow src/main.c src/interactive.c src/workflow.c src/parser.c src/task.c src/command.c
+[?2004h]0;mth777@Mth: /mnt/c/processflow[01;32mmth777@Mth[00m:[01;34m/mnt/c/processflow[00m$ make clean && make[1P./src/processflow
+[?2004lprocessflow> task listar /bin/ls -l
+task conttarefa 'listar' cadastrada (programa: '/bin/ls')
+processflow> ar /usr/bin/wc -l
+buscar listar
+tarefa 'contar' cadastrada (programa: '/usr/bin/wc')
+exitprocessflow> nome: listar
+programa: /bin/ls
+argc: 2
+argv[0] = '/bin/ls'
+argv[1] = '-l'
+processflow> ]  exit
+Comando desconhecido: 

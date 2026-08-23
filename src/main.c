@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "interactive.h"
+#include "workflow.h" 
 
 int main(int argc, char *argv[]){
 
@@ -9,11 +11,10 @@ int main(int argc, char *argv[]){
     }
 
     if (argc == 2){
-        printf("Modo WorkFlow. Arquivos recebidos: %s\n", argv[1]);
-        
+        run_workflow(argv[1]);
     }
     else{
-        printf("Modo Interativo.\n");
+        run_interactive();
     }
     return 0;
 }

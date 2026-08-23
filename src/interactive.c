@@ -3,6 +3,9 @@
 #include "interactive.h"
 #include "common.h"
 #include "parser.h"
+#include "task.h"
+#include "command.h"
+
 
 #define MAX_TOKENS 64
 
@@ -10,12 +13,14 @@ void run_interactive(void){
     char linha[MAX_LINE];
     char *tokens[MAX_TOKENS];
 
+    init_tasks();
+
     while(1){
         printf("processflow> ");
         fflush(stdout);
 
-        if (fgets(linha, sizeof(linha), stdin) == NULL){
-            printf("\n");
+        if(fgets(linha, sizeof(linha), stdin) == NULL){
+            printf("/n");
             break;
         }
 
@@ -23,14 +28,10 @@ void run_interactive(void){
 
         int n = tokenize(linha, tokens, MAX_TOKENS);
 
-        if(n == 0){
-            continue;
-        }
-
-        if(strcmp(linha, "exit") == 0){
+        int should_exist = dispatch_command(tokens, n);
+        
+        if(should_exist){
             break;
         }
-
-        printf("Comando aceito: '%s' (com %d token(s) no total)\n", tokens[0], n);
     }
 }

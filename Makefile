@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -g -Iinclude
 SRC_DIR = src
 TARGET = $(SRC_DIR)/processflow
 
-SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/interactive.c $(SRC_DIR)/workflow.c $(SRC_DIR)/parser.c 
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/interactive.c $(SRC_DIR)/workflow.c $(SRC_DIR)/parser.c $(SRC_DIR)/task.c $(SRC_DIR)/command.c
 
 all: $(TARGET)
 

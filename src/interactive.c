@@ -17,7 +17,7 @@ void run_interactive(void){
 
     while(1){
         printf("processflow> ");
-        fflush(stdout);
+        fflush(stderr);
 
         if(fgets(linha, sizeof(linha), stdin) == NULL){
             printf("/n");

@@ -46,7 +46,7 @@ int add_task(char**tokens, int ntokens){
     t->append_mode = 0;
 
     task_cont++;
-    printf("tarefa '%s' cadastrada (programa: '%s')\n", t->name,t->program);
+    fprintf(stderr,"tarefa '%s' cadastrada (programa: '%s')\n", t->name,t->program);
     return 0;
 }
 

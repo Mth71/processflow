@@ -10,8 +10,8 @@
 
 
 int run_single(Task*t){
-    pid_t pid =fork();
-
+    fflush(stdout);
+    pid_t pid = fork();
     if(pid<0){
         fprintf(stderr, "erro no fork(): '%s'\n", strerror(errno));
         return -1;
@@ -88,6 +88,7 @@ int run_parallel(char**names, int n){
             continue;
         }
 
+        fflush(stdout);
         pid_t pid = fork();
         if(pid < 0){
             fprintf(stderr, "erro no fork(): '%s'\n", strerror(errno));
@@ -137,7 +138,7 @@ int run_pipeline(char**names, int n){
     }
 
     pid_t pids[MAX_TOKENS];
-    
+    fflush(stdout);
     for(int i =0; i< n; i++){
         pid_t pid = fork();
 
@@ -182,6 +183,7 @@ int run_pipeline(char**names, int n){
 }
 
 pid_t start_background(Task*t){
+    fflush(stdout);
     pid_t pid =fork();
 
     if(pid<0){

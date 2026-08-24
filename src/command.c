@@ -28,33 +28,47 @@ static void handle_buscar(char**tokens, int ntokens){
     }
 }
 
-static void handle_run(char**tokens, int ntokens){
-    if(ntokens < 3){
-        fprintf(stderr, "uso: run <sequential|parallel|pipe> <tarefa..>");
+static void handle_run(char **tokens, int ntokens) {
+    if (ntokens < 2) {
+        fprintf(stderr, "uso: run <tarefa> | run <sequential|parallel|pipe> <tarefa...>\n");
         return;
     }
 
     const char *mode = tokens[1];
 
-    if(strcmp(mode,"sequential") == 0){
-        for(int i = 2; i < ntokens; i++){
-            Task*t = find_task(tokens[i]);
-            if(t == NULL){
-                fprintf(stderr, "tarefa '%s' não encontrada\n", tokens[i]);
+    if (strcmp(mode, "sequential") == 0) {
+        if (ntokens < 3) {
+            fprintf(stderr, "uso: run sequential <tarefa...>\n");
+            return;
+        }
+        for (int i = 2; i < ntokens; i++) {
+            Task *t = find_task(tokens[i]);
+            if (t == NULL) {
+                fprintf(stderr, "tarefa '%s' nao encontrada\n", tokens[i]);
                 continue;
             }
             run_single(t);
         }
-    }
-    else if(strcmp(mode, "parallel") == 0){
+    } else if (strcmp(mode, "parallel") == 0) {
+        if (ntokens < 3) {
+            fprintf(stderr, "uso: run parallel <tarefa...>\n");
+            return;
+        }
         run_parallel(&tokens[2], ntokens - 2);
-    }
-    else if(strcmp(mode, "pipe") == 0){
-        run_pipeline(&tokens[2], ntokens -2);
-    }
-    else{
-        fprintf(stderr, "modo '%s' ainda não implementado\n", mode);
-
+    } else if (strcmp(mode, "pipe") == 0) {
+        if (ntokens < 3) {
+            fprintf(stderr, "uso: run pipe <tarefa...>\n");
+            return;
+        }
+        run_pipeline(&tokens[2], ntokens - 2);
+    } else {
+        /* atalho: 'run <tarefa>' sem palavra de modo, executa uma unica tarefa */
+        Task *t = find_task(mode);
+        if (t == NULL) {
+            fprintf(stderr, "tarefa '%s' nao encontrada\n", mode);
+            return;
+        }
+        run_single(t);
     }
 }
 
@@ -129,7 +143,7 @@ static void handle_workdir(char **tokens, int ntokens) {
         return;
     }
     set_workdir(tokens[1]);
-    printf("diretorio de trabalho alterado para '%s'\n", tokens[1]);
+    fprintf(stderr,"diretorio de trabalho alterado para '%s'\n", tokens[1]);
 }
 
 int dispatch_command(char**tokens, int ntokens){

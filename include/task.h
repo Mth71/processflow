@@ -7,6 +7,9 @@ typedef struct TASK {
     char name[MAX_LINE];
     char program[MAX_LINE];
     char *argv[MAX_TOKENS];
+    char input_file[MAX_LINE];
+    char output_file[MAX_LINE];
+    int append_mode;
     int argc;
 }Task;
 

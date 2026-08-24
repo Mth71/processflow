@@ -40,12 +40,13 @@ int add_task(char**tokens, int ntokens){
     t->argv[argc] = NULL;
     t->argc = argc;
 
-    task_cont++;
+    t->input_file[0]='\0';
+    t->output_file[0]='\0';
+    t->append_mode = 0;
 
+    task_cont++;
     printf("tarefa '%s' cadastrada (programa: '%s')\n", t->name,t->program);
     return 0;
-
-
 }
 
 Task *find_task(const char*name){

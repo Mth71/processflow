@@ -19,8 +19,34 @@ int run_single(Task*t){
 
     if(pid == 0){
         //processo filho
-        execvp(t->program, t->argv);
 
+        if (t->input_file[0] != '\0'){
+            int fd = open(t->input_file, O_RDONLY);
+            if(fd < 0){
+                fprintf(stderr, "erro ao abrir arquivo de entrada '%s': %s\n", t->input_file, strerror(errno));
+                _exit(126);
+            }
+            dup2(fd, STDIN_FILENO);
+            close(fd);
+        }
+
+        if(t->output_file[0] != '\0'){
+            int flags;
+            if(t->append_mode){
+                flags =  O_WRONLY | O_CREAT | O_APPEND;
+            }else{
+                flags = O_WRONLY | O_CREAT | O_TRUNC;
+            }
+            int fd = open(t->output_file, flags, 0644);
+            if(fd < 0){
+                fprintf(stderr, "erro ao abrir arquivo de saida '%s': %s\n", t->output_file, strerror(errno));
+                _exit(126);
+            }
+            dup2(fd, STDOUT_FILENO);
+            close(fd);
+        }
+
+        execvp(t->program, t->argv);
         fprintf(stderr, "erro ao executar '%s': %s\n", t->program, strerror(errno));
         _exit(127);
     }

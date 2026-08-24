@@ -55,7 +55,37 @@ static void handle_run(char**tokens, int ntokens){
     }
 }
 
+static void handle_input(char**tokens, int ntokens){
+    if(ntokens != 3){
+        fprintf(stderr, "uso: input <tarefa> <arquivo>");
+        return;
+    }
+    Task *t = find_task(tokens[1]);
+    if(t == NULL){
+        fprintf(stderr, "tarefa '%s' não encontrada\n", tokens[1]);
+        return;
+    }
+    strncpy(t->input_file, tokens[2], MAX_LINE -1);
+}
 
+static void handle_output(char**tokens, int ntokens, int append){
+    if(ntokens != 3){
+        if(append){
+            fprintf(stderr, "uso: append <tarefa> <arquivo>\n");
+        }
+        else{
+            fprintf(stderr, "uso: output <tarefa> <arquivo>\n");
+        }
+        return;
+    }
+    Task*t = find_task(tokens[1]);
+    if(t == NULL){
+        fprintf(stderr, "tarefa '%s' não encontrada\n", tokens[1]);
+        return;
+    }
+    strncpy(t->output_file, tokens[2], MAX_LINE -1);
+    t->append_mode = append;
+}
 
 
 
@@ -75,6 +105,15 @@ int dispatch_command(char**tokens, int ntokens){
     }
     else if(strcmp(tokens[0], "run") == 0){
         handle_run(tokens, ntokens);
+    }
+    else if(strcmp(tokens[0], "input")==0){
+        handle_input(tokens, ntokens);
+    }   
+    else if(strcmp(tokens[0], "output") == 0){
+        handle_output(tokens, ntokens, 0);
+    }
+    else if(strcmp(tokens [0], "append") == 0){
+        handle_output(tokens, ntokens, 1);
     }
     else{
         printf("Comando desconhecido: '%s'\n", tokens[0]);

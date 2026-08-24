@@ -2,6 +2,7 @@
 #include <string.h>
 #include "command.h"
 #include "task.h"
+#include "exec.h"
 
 static void handle_buscar(char**tokens, int ntokens){
     if(ntokens<2){
@@ -24,6 +25,33 @@ static void handle_buscar(char**tokens, int ntokens){
     }
 }
 
+static void handle_run(char**tokens, int ntokens){
+    if(ntokens < 3){
+        fprintf(stderr, "uso: run <sequential|parallel|pipe> <tarefa..>");
+        return;
+    }
+
+    const char *mode = tokens[1];
+
+    if(strcmp(mode,"sequential") == 0){
+        for(int i = 2; i < ntokens; i++){
+            Task*t = find_task(tokens[i]);
+            if(t == NULL){
+                fprintf(stderr, "tarefa '%s' não encontrada\n", tokens[i]);
+                continue;
+            }
+            run_single(t);
+        }
+    }else{
+        fprintf(stderr, "modo '%s' ainda não implementado\n", mode);
+
+    }
+}
+
+
+
+
+
 int dispatch_command(char**tokens, int ntokens){
     if(ntokens == 0){
         return 0;
@@ -37,7 +65,11 @@ int dispatch_command(char**tokens, int ntokens){
     }
     else if(strcmp(tokens[0], "buscar") == 0){
         handle_buscar(tokens, ntokens);
-    }else{
+    }
+    else if(strcmp(tokens[0], "run") == 0){
+        handle_run(tokens, ntokens);
+    }
+    else{
         printf("Comando desconhecido: '%s'\n", tokens[0]);
     }
     return 0;

@@ -46,6 +46,9 @@ static void handle_run(char**tokens, int ntokens){
     else if(strcmp(mode, "parallel") == 0){
         run_parallel(&tokens[2], ntokens - 2);
     }
+    else if(strcmp(mode, "pipe") == 0){
+        run_pipeline(&tokens[2], ntokens -2);
+    }
     else{
         fprintf(stderr, "modo '%s' ainda não implementado\n", mode);
 

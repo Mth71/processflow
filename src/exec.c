@@ -5,6 +5,7 @@
 #include <sys/wait.h>
 #include <errno.h>
 #include <string.h>
+#include <fcntl.h>
 #include "exec.h"
 
 
@@ -72,6 +73,63 @@ int run_parallel(char**names, int n){
     }
 
     for(int i =0;i<cont;i++){
+        int status;
+        waitpid(pids[i], &status, 0);
+    }
+    return 0;
+}
+
+int run_pipeline(char**names, int n){
+    Task *tasks[MAX_TOKENS];
+    for(int i =0; i < n; i++){
+        tasks[i] = find_task(names[i]);
+        if(tasks[i] == NULL){
+            fprintf(stderr, "tarefa '%s' não encontrada.\n", names[i]);
+            return -1;
+        }
+    }
+
+    int pipes[MAX_TOKENS][2];
+    for(int i =0; i< n-1; i++){
+        if(pipe(pipes[i]) != 0){
+            fprintf(stderr, "erro ao criar pipe: '%s'\n", strerror(errno));
+            return -1;
+        }
+    }
+
+    pid_t pids[MAX_TOKENS];
+    
+    for(int i =0; i< n; i++){
+        pid_t pid = fork();
+
+        if(pid == 0){
+            if(i > 0){
+                dup2(pipes[i-1][0], STDIN_FILENO);
+            }
+            if(i < n - 1){
+                dup2(pipes[i][1], STDOUT_FILENO);
+            }
+
+            for(int k =0 ; k<n-1;k++){
+                close(pipes[k][0]);
+                close(pipes[k][1]);
+            }
+
+            execvp(tasks[i]->program, tasks[i]->argv);
+            fprintf(stderr, "erro ao executar '%s': %s\n", tasks[i]->program, strerror(errno));
+            _exit(127);
+        }
+        pids[i] = pid;
+    }
+
+
+    //pai fecha tds os pipelines(n precisa deles mais)
+
+    for(int i = 0; i< n -1; i++){
+        close(pipes[i][0]);
+        close(pipes[i][1]);
+    }
+    for(int i = 0; i<n; i++){
         int status;
         waitpid(pids[i], &status, 0);
     }

@@ -42,3 +42,38 @@ int run_single(Task*t){
     return exit_code;
 
 }
+
+
+int run_parallel(char**names, int n){
+    pid_t pids[MAX_TOKENS];
+    int cont = 0;
+
+    for(int i =0; i<n;i++){
+        Task *t = find_task(names[i]);
+        if(t == NULL){
+            fprintf(stderr,"tarefa '%s' não encontrada\n", names[i]);
+            continue;
+        }
+
+        pid_t pid = fork();
+        if(pid < 0){
+            fprintf(stderr, "erro no fork(): '%s'\n", strerror(errno));
+            continue;
+        }
+
+        if (pid == 0){
+            execvp(t->program, t->argv);
+            fprintf(stderr, "erro ao executar '%s': %s\n", t->program, strerror(errno));
+            _exit(127);
+        }
+
+        pids[cont] = pid;
+        cont++;
+    }
+
+    for(int i =0;i<cont;i++){
+        int status;
+        waitpid(pids[i], &status, 0);
+    }
+    return 0;
+}

@@ -42,7 +42,11 @@ static void handle_run(char**tokens, int ntokens){
             }
             run_single(t);
         }
-    }else{
+    }
+    else if(strcmp(mode, "parallel") == 0){
+        run_parallel(&tokens[2], ntokens - 2);
+    }
+    else{
         fprintf(stderr, "modo '%s' ainda não implementado\n", mode);
 
     }

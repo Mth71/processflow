@@ -5,4 +5,6 @@
 
 int run_single(Task*t);
 
+int run_parallel(char**names,int n);
+
 #endif

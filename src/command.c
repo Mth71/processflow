@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "command.h"
 #include "task.h"
 #include "exec.h"
+#include "jobs.h"
 
 static void handle_buscar(char**tokens, int ntokens){
     if(ntokens<2){
@@ -87,6 +89,34 @@ static void handle_output(char**tokens, int ntokens, int append){
     t->append_mode = append;
 }
 
+static void handle_start(char**tokens, int ntokens){
+    if(ntokens != 2){
+        fprintf(stderr, "uso: start <tarefa>");
+        return;
+    }
+
+    Task*t = find_task(tokens[1]);
+    if(t == NULL){
+        fprintf(stderr, "tarefa '%s' não encontrada\n", tokens[1]);
+        return;
+    }
+    pid_t pid = start_background(t);
+    if(pid > 0){
+        add_job(pid, tokens[1]);
+    }
+}
+
+static void handle_wait(char**tokens, int ntokens){
+    if(ntokens != 2){
+        fprintf(stderr, "uso: wait <jobId>\n");
+        return;
+    }
+
+    int id = atoi(tokens[1]);
+    wait_job(id);
+}
+
+
 
 
 int dispatch_command(char**tokens, int ntokens){
@@ -114,6 +144,15 @@ int dispatch_command(char**tokens, int ntokens){
     }
     else if(strcmp(tokens [0], "append") == 0){
         handle_output(tokens, ntokens, 1);
+    }
+    else if(strcmp(tokens[0], "start") == 0){
+        handle_start(tokens, ntokens);
+    }
+    else if(strcmp(tokens[0], "jobs") == 0){
+        list_jobs();
+    }
+    else if(strcmp(tokens[0], "wait") == 0){
+        handle_wait(tokens, ntokens);
     }
     else{
         printf("Comando desconhecido: '%s'\n", tokens[0]);

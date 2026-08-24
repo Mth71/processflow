@@ -161,3 +161,19 @@ int run_pipeline(char**names, int n){
     }
     return 0;
 }
+
+pid_t start_background(Task*t){
+    pid_t pid =fork();
+
+    if(pid<0){
+        fprintf(stderr, "erro n fork(): %s\n", strerror(errno));
+        return -1;
+    }
+
+    if (pid == 0){
+        execvp(t->program, t->argv);
+        fprintf(stderr, "erro ao executar '%s: %s\n", t->program, strerror(errno));
+        _exit(127);
+    }
+    return pid;
+}

@@ -17,4 +17,7 @@ void init_tasks(void);
 int add_task(char**tokens, int ntokens);
 Task*find_task(const char *name);
 
+void set_workdir(const char *dir);
+const char *get_workdir(void);
+
 #endif

@@ -45,7 +45,13 @@ int run_single(Task*t){
             dup2(fd, STDOUT_FILENO);
             close(fd);
         }
-
+        if (get_workdir()[0] != '\0') {
+            if (chdir(get_workdir()) != 0) {
+            fprintf(stderr, "erro ao mudar para o diretorio '%s': %s\n", get_workdir(), strerror(errno));
+            _exit(126);
+        }
+        }
+       
         execvp(t->program, t->argv);
         fprintf(stderr, "erro ao executar '%s': %s\n", t->program, strerror(errno));
         _exit(127);
@@ -86,6 +92,13 @@ int run_parallel(char**names, int n){
         if(pid < 0){
             fprintf(stderr, "erro no fork(): '%s'\n", strerror(errno));
             continue;
+        }
+
+        if (get_workdir()[0] != '\0') {
+            if (chdir(get_workdir()) != 0) {
+            fprintf(stderr, "erro ao mudar para o diretorio '%s': %s\n", get_workdir(), strerror(errno));
+            _exit(126);
+        }
         }
 
         if (pid == 0){
@@ -141,6 +154,12 @@ int run_pipeline(char**names, int n){
                 close(pipes[k][1]);
             }
 
+            if (get_workdir()[0] != '\0') {
+            if (chdir(get_workdir()) != 0) {
+            fprintf(stderr, "erro ao mudar para o diretorio '%s': %s\n", get_workdir(), strerror(errno));
+            _exit(126);
+            }
+            }
             execvp(tasks[i]->program, tasks[i]->argv);
             fprintf(stderr, "erro ao executar '%s': %s\n", tasks[i]->program, strerror(errno));
             _exit(127);
@@ -169,8 +188,15 @@ pid_t start_background(Task*t){
         fprintf(stderr, "erro n fork(): %s\n", strerror(errno));
         return -1;
     }
-
+        
     if (pid == 0){
+        
+        if (get_workdir()[0] != '\0') {
+            if (chdir(get_workdir()) != 0) {
+            fprintf(stderr, "erro ao mudar para o diretorio '%s': %s\n", get_workdir(), strerror(errno));
+            _exit(126);
+        }
+        }
         execvp(t->program, t->argv);
         fprintf(stderr, "erro ao executar '%s: %s\n", t->program, strerror(errno));
         _exit(127);

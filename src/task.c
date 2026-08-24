@@ -5,6 +5,7 @@
 
 static Task tasks[MAX_TASKS];
 static int task_cont =0;
+static char current_workdir[MAX_LINE] = "";
 
 void init_tasks(void){
     task_cont =0;
@@ -56,4 +57,12 @@ Task *find_task(const char*name){
         }
     }
     return NULL;
+}
+
+void set_workdir(const char *dir) {
+    strncpy(current_workdir, dir, MAX_LINE - 1);
+}
+
+const char *get_workdir(void) {
+    return current_workdir;
 }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 #include "command.h"
 #include "task.h"
 #include "exec.h"
@@ -117,7 +118,19 @@ static void handle_wait(char**tokens, int ntokens){
 }
 
 
-
+static void handle_workdir(char **tokens, int ntokens) {
+    if (ntokens != 2) {
+        fprintf(stderr, "uso: workdir <diretorio>\n");
+        return;
+    }
+    struct stat sb;
+    if (stat(tokens[1], &sb) != 0 || !S_ISDIR(sb.st_mode)) {
+        fprintf(stderr, "erro: diretorio '%s' nao existe\n", tokens[1]);
+        return;
+    }
+    set_workdir(tokens[1]);
+    printf("diretorio de trabalho alterado para '%s'\n", tokens[1]);
+}
 
 int dispatch_command(char**tokens, int ntokens){
     if(ntokens == 0){
@@ -153,6 +166,9 @@ int dispatch_command(char**tokens, int ntokens){
     }
     else if(strcmp(tokens[0], "wait") == 0){
         handle_wait(tokens, ntokens);
+    }
+    else if(strcmp(tokens[0], "workdir") == 0){
+        handle_workdir(tokens, ntokens);
     }
     else{
         printf("Comando desconhecido: '%s'\n", tokens[0]);
